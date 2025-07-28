@@ -12,17 +12,19 @@ const WalletIcon = () => (
   </svg>
 );
 
-// Component for the payment method selection modal
-const PaymentModal = ({ onClose, router, orderDetails }) => {
+// ***** BUG FIX Part 1: The modal now accepts an `onMethodSelect` function *****
+const PaymentModal = ({ onClose, router, orderDetails, onMethodSelect }) => {
   const [paymentMethod, setPaymentMethod] = useState('wallet');
 
   const handleProceed = () => {
     if (paymentMethod === 'card') {
+      // If card is selected, redirect to the card page.
       const { name, price, items } = orderDetails;
       const itemsString = encodeURIComponent(JSON.stringify(items));
       router.push(`/packages/payment/card?name=${encodeURIComponent(name)}&price=${price}&items=${itemsString}`);
     } else {
-      onClose();
+      // If wallet is selected, call the function from the parent to update the state.
+      onMethodSelect('Online Wallet');
     }
   };
 
@@ -44,14 +46,13 @@ const PaymentModal = ({ onClose, router, orderDetails }) => {
           </label>
         </div>
         <button onClick={handleProceed} className="w-full px-4 py-3 rounded-lg bg-black text-white font-bold hover:bg-gray-800">
-          {paymentMethod === 'card' ? 'Proceed to Card Payment' : 'Done'}
+          {paymentMethod === 'card' ? 'Proceed to Card Payment' : 'Confirm Selection'}
         </button>
       </div>
     </div>
   );
 };
 
-// ***** UPDATED: This component is now a modal popup *****
 const LoadingModal = () => (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 p-4">
         <div className="bg-white p-10 rounded-2xl shadow-2xl flex flex-col items-center max-w-sm w-full">
@@ -98,11 +99,16 @@ const OrderDetailsPage = () => {
     setTimeout(() => {
       const { name, price, items, orderNumber, date } = orderDetails;
       const itemsString = encodeURIComponent(JSON.stringify(items));
-      
       router.push(
         `/orders/confirmation?name=${encodeURIComponent(name)}&price=${price}&items=${itemsString}&orderNumber=${orderNumber}&date=${encodeURIComponent(date)}&paymentMethod=${encodeURIComponent(selectedPaymentMethod)}`
       );
     }, 2000);
+  };
+
+  // ***** BUG FIX Part 2: This function updates the state and closes the modal *****
+  const handleMethodSelection = (method) => {
+    setSelectedPaymentMethod(method);
+    setIsModalOpen(false);
   };
 
   if (!orderDetails) {
@@ -168,10 +174,14 @@ const OrderDetailsPage = () => {
         </div>
       </div>
       
-      {/* Conditionally render the payment method modal */}
-      {isModalOpen && <PaymentModal onClose={() => setIsModalOpen(false)} router={router} orderDetails={orderDetails} />}
+      {/* ***** BUG FIX Part 3: Pass the new function to the modal ***** */}
+      {isModalOpen && <PaymentModal 
+        onClose={() => setIsModalOpen(false)} 
+        router={router} 
+        orderDetails={orderDetails}
+        onMethodSelect={handleMethodSelection} 
+      />}
       
-      {/* Conditionally render the loading popup */}
       {isProcessing && <LoadingModal />}
     </div>
   );
