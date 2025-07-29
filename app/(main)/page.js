@@ -1,3 +1,6 @@
+import Accordion from "@/components/landing-page/Accordian";
+import TestimonialCarousel from "@/components/landing-page/TestimonialsCarousel";
+import { faqs } from "@/components/landing-page/contants";
 export default function Home() {
   return (
     <div>
@@ -15,6 +18,8 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <TestimonialCarousel/>
+        <Accordion data={faqs} />
       </section>
     </div>
   );
