@@ -3,11 +3,12 @@ import AuthNav from "./auth/components/AuthNav"
 
 const AuthLayout = ({ children }) => {
     return (
-        <div>
-            <AuthNav/>
+        <div className="w-full max-w-screen-lg mx-auto px-4">
+            <AuthNav />
             {children}
-            <AuthFooter/>
+            <AuthFooter />
         </div>
+
     )
 }
 
