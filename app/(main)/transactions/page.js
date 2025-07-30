@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
+import { useRouter } from 'next/navigation';
 // --- MOCK DATA ---
 // Instead of Firebase, we'll use this static array of transactions for now.
 // When you're ready for a database, you can replace this with a fetch call.
@@ -75,6 +75,7 @@ const mockTransactions = [
 const TransactionHistoryPage = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     // Simulate fetching data by setting it from our mock array
@@ -138,9 +139,12 @@ const TransactionHistoryPage = () => {
         </div>
 
         <div className="text-center mt-8">
-            <Link href="/" className="px-12 py-3 rounded-lg bg-black text-white font-bold hover:bg-gray-800">
-                Back
-            </Link>
+            <button
+        onClick={() => router.back()}
+        className="px-12 py-3 rounded-lg bg-black text-white font-bold hover:bg-gray-800"
+      >
+        Back
+      </button>
         </div>
       </div>
     </div>
