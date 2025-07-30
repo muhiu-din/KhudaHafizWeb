@@ -1,6 +1,9 @@
 import Link from "next/link"
 
 const Password = () => {
+
+  
+
   return (
     <div className="flex justify-center items-center mt-20 pb-26 relative">
       <div className="bg-[#F5F4F0] w-2/3 p-4 rounded-lg shadow-xl pb-16 mb-10">
