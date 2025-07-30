@@ -1,28 +1,29 @@
 import Link from "next/link"
 
-const Email = () => {
+
+const Phone = () => {
   return (
     <div className="flex justify-center items-center mt-20 pb-26 relative">
       <div className="bg-[#F5F4F0] w-2/3 p-4 rounded-lg shadow-xl pb-16 mb-10">
 
         <form>
           <div className="flex justify-center items-center font-semibold text-2xl mb-8 pt-10">
-            <h1>Change Email</h1>
+            <h1>Enter current Phone Number</h1>
           </div>
 
           <div className="flex flex-col items-center gap-y-10">
             <div>
-              <p className="mb-2">Enter current Email:</p>
+              <p className="mb-2">Enter new Phone Number:</p>
               <input type="email" className="bg-white p-2 rounded-lg w-96 outline-none" />
             </div>
 
             <div>
-              <p className="mb-2">Enter new Email:</p>
+              <p className="mb-2">Enter new password:</p>
               <input type="email" className="bg-white p-2 rounded-lg w-96 outline-none" />
             </div>
 
             <div>
-              <p className="mb-2">Confirm new Email:</p>
+              <p className="mb-2">Confirm new password:</p>
               <input type="email" className="bg-white p-2 rounded-lg w-96 outline-none" />
             </div>
 
@@ -46,4 +47,4 @@ const Email = () => {
   )
 }
 
-export default Email
+export default Phone

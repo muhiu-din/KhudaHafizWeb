@@ -1,4 +1,7 @@
+'use client';
+import { useRouter } from 'next/navigation';
 const WalletOverview = () => {
+    const router = useRouter();
     return (<>
         <div className="font-bold text-xl text-[#281202] mt-10 mb-10">
             <h1>Wallet Overview</h1>
@@ -43,7 +46,7 @@ const WalletOverview = () => {
             <div className="flex justify-end items-center">
                 Transaction History:
                 
-                <button className="bg-black text-white pt-2 pb-2 pr-3 pl-3 w-30 rounded-md ml-5">View</button>
+                <button onClick={() => router.push('/transactions')} className="bg-black text-white pt-2 pb-2 pr-3 pl-3 w-30 rounded-md ml-5">View</button>
             </div>
             
             <div className="flex justify-center items-center mt-10">
