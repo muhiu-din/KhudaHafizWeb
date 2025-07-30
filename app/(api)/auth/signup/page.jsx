@@ -79,7 +79,7 @@ const Signup = () => {
                         </div>
 
                         {/* Signup Button */}
-                        <button className="w-full bg-[#49350a] text-white py-2 rounded-md hover:bg-[#5a410e] transition-colors">
+                        <button className="w-full bg-[#281202] text-white py-2 rounded-md hover:bg-[#372111] transition-colors">
                             Signup
                         </button>
 

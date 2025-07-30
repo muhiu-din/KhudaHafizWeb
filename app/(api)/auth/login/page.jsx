@@ -41,7 +41,7 @@ const Login = () => {
                             <Link className="text-blue-700 my-2 font-semibold" href={"/auth/forgot-password"}>Forgot Password?</Link>
                         </div>
 
-                        <button className="w-full bg-[#49350a] text-white py-2 rounded-md hover:bg-[#5a410e] transition-colors">
+                        <button className="w-full bg-[#281202] text-white py-2 rounded-md hover:bg-[#372111] transition-colors">
                             Login
                         </button>
                         <div className="flex items-center my-2">
