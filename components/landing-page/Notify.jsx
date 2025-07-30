@@ -6,7 +6,7 @@ const Notify = () => {
   const [showFeedback, setShowFeedback] = useState(false);
 
   return (
-    <section className="relative w-full max-w-5xl mx-auto my-25 px-5 py-20">
+    <section className="relative w-full max-w-5xl mx-auto mt-25 mb-12 px-5 py-20">
       <div className="text-center mb-12 px-5">
         {/* Heading */}
         <h2 className="text-3xl font-bold text-[#281202]">Compassionate Services in Times of Need</h2>

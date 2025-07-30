@@ -22,10 +22,17 @@ export default function Home() {
           </div>
         </div>
         <Notify/>
+        {/* that's the horizontal row isn't effected by the container width */}
+        <div className="w-screen h-px  bg-gray-300 relative left-1/2 -translate-x-1/2" />
+
         <OurServices/>
+        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
         <Works/>
+        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
         <TestimonialCarousel/>
+        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
         <Accordion data={faqs} />
+        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
       </section>
     </div>
   );
