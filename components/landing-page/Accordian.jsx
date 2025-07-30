@@ -48,3 +48,4 @@ const Accordion = ({ data }) => {
 };
 
 export default Accordion;
+ 

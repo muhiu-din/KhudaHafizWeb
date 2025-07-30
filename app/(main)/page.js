@@ -1,5 +1,8 @@
 import Accordion from "@/components/landing-page/Accordian";
 import TestimonialCarousel from "@/components/landing-page/TestimonialsCarousel";
+import OurServices from "@/components/landing-page/OurServices"
+import Notify from "@/components/landing-page/Notify"
+import Works from "@/components/landing-page/Works";
 import { faqs } from "@/components/landing-page/contants";
 export default function Home() {
   return (
@@ -18,6 +21,9 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <Notify/>
+        <OurServices/>
+        <Works/>
         <TestimonialCarousel/>
         <Accordion data={faqs} />
       </section>
