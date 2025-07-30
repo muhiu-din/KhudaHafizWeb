@@ -1,10 +1,10 @@
-import React from 'react'
+import Link from 'next/link'
 
 const AccountOverview = () => {
   return (
     <>
       <div className="font-bold text-xl text-[#281202] mt-10 mb-10">
-        <h1>Wallet Overview</h1>
+        <h1>Account Overview</h1>
       </div>
 
       <div className='grid grid-cols-2 gap-x-12 gap-y-5'>
@@ -17,7 +17,11 @@ const AccountOverview = () => {
               className=" bg-white text-black p-2 text-center rounded-lg outline-none
             border-2 border-slate-300 w-64"/>
 
-            <button className='bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30'>Change</button>
+            <Link href='/settings/email'>
+              <button 
+                className='bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30 cursor-pointer'
+                >Change</button>
+            </Link>
           </div>
         </div>
 
@@ -30,7 +34,9 @@ const AccountOverview = () => {
               className=" bg-white text-black p-2 text-center rounded-lg outline-none
               border-2 border-slate-300 w-64"/>
 
-            <button className='bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30'>Change</button>
+            <Link href="/settings/phone">
+              <button className='bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30 cursor-pointer'>Change</button>
+            </Link>
           </div>
         </div>
 
@@ -39,7 +45,9 @@ const AccountOverview = () => {
             Password
           </div>
 
-          <button className='bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30'>Change</button>
+          <Link href="/settings/password">
+            <button className='bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30 cursor-pointer'>Change</button>
+          </Link>
         </div>
 
         <div className='flex justify-end items-center'>
@@ -47,7 +55,9 @@ const AccountOverview = () => {
             Delete Account
           </div>
 
-          <button className='bg-[#F3073A] text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30'>Change</button>
+            <Link href="/settings/deleteAccount">
+              <button className='bg-[#F3073A] text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30 cursor-pointer'>Delete</button>
+            </Link>
         </div>
       </div>
     </>
