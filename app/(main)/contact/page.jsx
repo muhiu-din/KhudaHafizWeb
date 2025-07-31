@@ -72,16 +72,7 @@ export default function ContactUs() {
                 Help others by sharing this platform with your friends & family ❤️
               </p>
 
-              <div className="flex justify-between items-center flex-wrap gap-2">
-                <span className="text-sm text-gray-600 italic">Message: {messageText}</span>
-                <button
-                  onClick={handleCopy}
-                  className="flex items-center gap-2 bg-[#7B5A13] hover:bg-[#6a4e10] text-white px-4 py-1 rounded-full text-sm transition duration-200"
-                >
-                  <FaCopy />
-                  <span>{copySuccess ? "Copied!" : "Copy Message"}</span>
-                </button>
-              </div>
+              
             </div>
           )}
         </div>
