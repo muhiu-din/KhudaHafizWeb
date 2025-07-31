@@ -27,7 +27,7 @@ const OurServices = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 container mx-auto">
         {/* Section Heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl h-10 font-bold text-[#281202]">Our Services</h2>
