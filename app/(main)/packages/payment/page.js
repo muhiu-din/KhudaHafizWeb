@@ -120,7 +120,7 @@ const OrderDetailsPage = () => {
   }
 
   return (
-    <div className="relative bg-[#FFF9F3] min-h-screen flex items-center justify-center font-[Outfit] p-4 md:p-8">
+    <div className="relative bg-[#FFF9F3] min-h-screen flex items-center justify-center font-geist p-4 md:p-8">
       <div className="max-w-2xl w-full bg-white rounded-2xl shadow-lg p-8 md:p-12">
         <h1 className="text-3xl font-bold text-center mb-8 text-black">Order Details</h1>
         <div className="grid grid-cols-3 gap-4 text-center mb-6">

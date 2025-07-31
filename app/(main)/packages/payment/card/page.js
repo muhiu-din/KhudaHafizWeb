@@ -42,7 +42,7 @@ const CardPaymentPage = () => {
   };
 
   return (
-    <div className="bg-[#FFF9F3] min-h-screen flex items-center justify-center font-[Outfit] p-4">
+    <div className="bg-[#FFF9F3] min-h-screen flex items-center justify-center font-geist p-4">
       <div className="max-w-xl w-full bg-white rounded-2xl shadow-lg p-8 md:p-12">
         <h1 className="text-2xl font-bold text-center mb-2 text-black">Add Card Details</h1>
         <div className="w-full flex justify-center mb-8">

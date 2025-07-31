@@ -45,7 +45,7 @@ const PackagesPage = () => {
   }, [selectedServices]);
 
   return (
-    <div className="font-[Outfit] bg-[#FFF9F3]">
+    <div className="font-geist bg-[#FFF9F3]">
       <section className="px-6 md:px-24 pt-12 md:pt-24 pb-20 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Choose Your Package</h2>
         <p className="text-[#6B4E2E] mb-10">
@@ -141,23 +141,31 @@ const PackagesPage = () => {
             <h3 className="text-2xl font-bold text-black">Services</h3>
             <h3 className="text-2xl font-bold text-black">Prices</h3>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-8">
             {servicesData.map((service) => (
-              <div key={service.name} className="flex justify-between items-center">
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id={service.name}
-                    name={service.name}
-                    checked={!!selectedServices[service.name]}
-                    onChange={handleServiceChange}
-                    className="h-6 w-6 rounded-full border-gray-400 text-[#8A6A2F] focus:ring-[#8A6A2F] cursor-pointer"
-                  />
-                  <label htmlFor={service.name} className="ml-4 text-lg text-gray-700 cursor-pointer">{service.name}</label>
+              <div key={service.name} className="flex items-center">
+                <div className="w-1/2 flex items-center">
+                  <label htmlFor={service.name} className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      id={service.name}
+                      name={service.name}
+                      checked={!!selectedServices[service.name]}
+                      onChange={handleServiceChange}
+                      className="sr-only peer"
+                    />
+                    <span className="w-6 h-6 bg-white border-2 border-gray-400 rounded-full
+                                    peer-checked:bg-[#f5d69d] peer-checked:border-[#8A6A2F]
+                                    transition">
+                    </span>
+                    <span className="ml-4 text-lg text-gray-700 font-bold">{service.name}</span>
+                  </label>
                 </div>
-                <span className="text-lg font-medium text-gray-900">
-                  Rs {service.price.toLocaleString()}
-                </span>
+                <div className="w-1/2 text-right">
+                  <span className="text-lg text-gray-700 font-bold">
+                    Rs {service.price.toLocaleString()}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
