@@ -4,6 +4,7 @@ import OurServices from "@/components/landing-page/OurServices"
 import Notify from "@/components/landing-page/Notify"
 import Works from "@/components/landing-page/Works";
 import { faqs } from "@/components/landing-page/contants";
+
 export default function Home() {
   return (
     <div>

@@ -20,7 +20,7 @@ const Navbar = () => {
           <li><a href="/packages">Packages</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">About us</a></li>
-          <li><a href="#">Contact us</a></li>
+          <li><Link href="/contact">Contact </Link></li>
         </ul>
 
         {/* <!-- Buttons --> */}
