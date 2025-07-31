@@ -7,28 +7,25 @@ const WalletOverview = () => {
 
     // --- Simulate that payment gateway is setup or not ---
     const isPaymentGatewaySetup = true
-    return (<>
-        <div className="font-bold text-xl text-[#281202] mt-10 mb-10">
-            <h1>Wallet Overview</h1>
-        </div>
+    return (
+        <>
+            <div className="font-bold text-xl text-[#281202] mt-10 mb-10">
+                <h1>Wallet Overview</h1>
+            </div>
 
 
-        {
-            isPaymentGatewaySetup ?
+            {
+                isPaymentGatewaySetup ?
 
-                // --- DISPLAYED WHEN PAYMENT GATEWAY IS SETUP ---
-                <WalletDetails />
-                :
-                // --- DISPLAYED WHEN PAYMENT GATEWAY IS NOT SETUP ---
-                <SetWallet />
-        }
+                    // --- DISPLAYED WHEN PAYMENT GATEWAY IS SETUP ---
+                    <WalletDetails />
+                    :
+                    // --- DISPLAYED WHEN PAYMENT GATEWAY IS NOT SETUP ---
 
+                    <SetWallet />
+            }
 
-
-
-
-
-    </>
+        </>
     )
 }
 

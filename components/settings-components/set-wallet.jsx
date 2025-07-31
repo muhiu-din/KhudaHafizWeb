@@ -1,7 +1,7 @@
 
 const SetWallet = () => {
   return (
-    <div className='flex justify-end relative'>
+    <div className='flex justify-end relative text-[#281202]'>
                     <div className='flex flex-col gap-4 absolute left-10 bottom-10'>
                         <h1 
                           className='font-semibold text-xl mb-10'

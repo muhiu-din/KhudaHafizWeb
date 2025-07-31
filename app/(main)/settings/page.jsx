@@ -5,10 +5,10 @@ import WalletOverview from "@/components/settings-components/wallet-overview"
 
 const Settings = () => {
     return <>
-        <div className="flex justify-center items-center mt-5 w-full">
+        <div className="flex justify-center items-center mt-5 w-full text-[#281202]">
 
             <div className="w-full">
-
+            
                 <div className="font-bold text-3xl flex justify-center text-[#281202] ">
                     <h1>Settings</h1>
                 </div>

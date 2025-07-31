@@ -2,7 +2,7 @@ import Link from "next/link"
 
 const DeleteAccount = () => {
     return (
-        <div className="ml-40 mt-20 mb-20">
+        <div className="ml-40 mt-20 mb-20 text-[#281202]">
             <div>
                 <div className="font-semibold text-2xl mb-10">
                     <h1>
@@ -61,11 +61,14 @@ const DeleteAccount = () => {
                 </div>
 
                 <div className="flex justify-end mr-20">
-                    <button 
-                        className="bg-[#F3073A] text-white pl-5 pr-5 pt-2 pb-2 rounded-md ml-5 font-semibold cursor-pointer"
-                    >
-                        Delete Account
-                    </button>
+
+                    <Link href="/settings/deleteAccount/confirm">
+                        <button 
+                            className="bg-[#F3073A] text-white pl-5 pr-5 pt-2 pb-2 rounded-md ml-5 font-semibold cursor-pointer"
+                            >
+                            Delete Account
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

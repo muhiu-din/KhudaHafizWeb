@@ -3,7 +3,7 @@
 const WalletDetails = () => {
     return (
 
-        <div className="grid grid-cols-3 gap-x-5 gap-y-5">
+        <div className="grid grid-cols-3 gap-x-5 gap-y-5 text-[#281202]">
             <div className="flex justify-end items-center">
                 Wallet Status:
                 <input type="text" value={"Connected"} disabled
