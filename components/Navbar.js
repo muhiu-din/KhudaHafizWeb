@@ -16,7 +16,7 @@ const Navbar = () => {
 
         {/* <!-- Menu --> */}
         <ul className="hidden md:flex space-x-6 text-white text-base font-light">
-          <li><a href="#">Home</a></li>
+          <li><Link href="/home">Home</Link></li>
           <li><a href="/packages">Packages</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">About us</a></li>
