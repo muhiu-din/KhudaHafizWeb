@@ -4,7 +4,7 @@ const DeleteAccount = () => {
     return (
         <div className="ml-40 mt-20 mb-20 text-[#281202]">
             <div>
-                <div className="font-semibold text-2xl mb-10">
+                <div className="mb-10 text-2xl font-semibold">
                     <h1>
                         Delete Account
                     </h1>
@@ -16,7 +16,7 @@ const DeleteAccount = () => {
                         Are you sure you want to delete your account? <br />
                         Once you confirm, your data will be gone.</p>
 
-                    <ul className="flex flex-col gap-y-7 font-semibold">
+                    <ul className="flex flex-col font-semibold gap-y-7">
                         <li>
                             <input type="radio" className="mr-3 cursor-pointer" name="reason" />
                             I am no longer using my account
@@ -51,7 +51,7 @@ const DeleteAccount = () => {
                 <div className="">
                     <Link href="/settings">
                         <button 
-                            className="bg-black text-white pl-3 pr-3 pt-2 pb-2 rounded-md ml-5 w-30 font-semibold"
+                            className="pt-2 pb-2 pl-3 pr-3 ml-5 font-semibold text-white bg-black rounded-md w-30"
                         >
                             Back
                         </button>
