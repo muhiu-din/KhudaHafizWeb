@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="max-w-md">
         <div className="flex items-center gap-3 mb-4">
           {/* <!-- Replace with your actual logo --> */}
-          <img src="https://i.imgur.com/7YJ3HVP.png" alt="Logo" className="w-10 h-10" />
+          <img src="/auth-icons/navLogo.png" alt="Logo" className="w-10 h-10" />
           <h1 className="text-2xl font-bold text-white">KHUDA HAFIZ</h1>
         </div>
         <p className="text-[#E0D7D0] leading-relaxed mb-6">
