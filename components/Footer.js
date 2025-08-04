@@ -14,7 +14,7 @@ const Footer = () => {
           {/* <!-- Replace with your actual logo --> */}
           <img src="/auth-icons/navLogo.png" alt="Logo" className="w-10 h-10" />
           <h1 className="text-2xl font-bold text-white">KHUDA HAFIZ</h1>
-        </div>
+        </div> 
         <p className="text-[#E0D7D0] leading-relaxed mb-6">
           Pakistan's first digital platform providing compassionate funeral services and tech support for social good.
         </p>
