@@ -18,7 +18,7 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-white text-base font-light">
           <li><Link href="/home">Home</Link></li>
           <li><a href="/packages">Packages</a></li>
-          <li><a href="#">Services</a></li>
+          <li><a href="/services">Services</a></li>
           <li><a href="#">About us</a></li>
           <li><Link href="/contact">Contact </Link></li>
         </ul>
