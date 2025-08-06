@@ -31,7 +31,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="px-6 md:px-24 pt-20 pb-6 bg-[#3A291D] text-sm font-[Outfit] overflow-hidden">
+    <footer className="px-6 md:px-24 pt-20 pb-6 bg-[#3A291D] text-sm font-geist overflow-hidden">
       <motion.div 
         className="flex flex-col md:flex-row justify-between border-b border-[#5b4536] pb-12 gap-12"
         variants={footerContainerVariants}
