@@ -1,8 +1,13 @@
-
+"use client";
 import { MoveRight } from "lucide-react"
 import { Check } from "lucide-react"
+import { useRouter } from "next/navigation";
 
 export default function Packages() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/packages");
+  };
   return (
     <section className="py-16 px-6 mx-10 md:px-20 bg-white font-inter relative overflow-hidden">
       <h2 className="text-3xl font-bold text-center mb-16 text-[#3F2204]">Packages Offered</h2>
@@ -13,7 +18,7 @@ export default function Packages() {
           <p className="text-justify text-[#190A02] text-[18px] leading-[1.54] font-light mb-6">
             We offer thoughtfully designed packages to suit different needs and budgets. Whether it's a basic service or a complete funeral arrangement, each package includes respectful care, cultural sensitivity, and dedicated support.
           </p>
-          <button className="bg-black text-white px-5 py-2 font-semibold rounded-md hover:bg-gray-800 transition flex items-center w-fit">
+          <button onClick={handleClick} className="bg-black text-white px-5 py-2 font-semibold rounded-md hover:bg-gray-800 transition flex items-center w-fit">
             Explore <MoveRight className="ml-2 w-4" />
           </button>
         </div>

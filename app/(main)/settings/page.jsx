@@ -13,9 +13,9 @@ const Settings = () => {
                     <h1>Settings</h1>
                 </div>
 
-                <div className="w-full flex justify-center">
+                <div className="flex justify-center w-full">
                     <div className="bg-[#F5F4F0] p-10 rounded-lg mt-10 mb-20 shadow-xl w-4/5" >
-                        <div className="flex justify-center items-center gap-x-30
+                        <div className="flex  items-center justify-center gap-x-30
                         font-semibold bg-[#7b5a13] text-white pl-6 pr-6 pt-2 pb-2
                         rounded-3xl">
                             <h1>Profile</h1>

@@ -11,15 +11,17 @@ const Navbar = () => {
         {/* <!-- Logo --> */}
         <div className="flex items-center space-x-3">
           <img src="/auth-icons/navLogo.png" className="w-8 h-8" alt="Logo" />
-          <h1 className="font-bold text-white text-lg">KHUDA HAFIZ</h1>
+            <Link href="/">
+              <h1 className="font-bold text-white text-lg cursor-pointer">KHUDA HAFIZ</h1>
+            </Link>
         </div>
 
         {/* <!-- Menu --> */}
         <ul className="hidden md:flex space-x-6 text-white text-base font-light">
           <li><Link href="/home">Home</Link></li>
-          <li><a href="#">Packages</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About us</a></li>
+          <li><Link href="/packages">Packages</Link></li>
+          <li><Link href="/services">Services</Link></li>
+          <li><Link href="/about">About us</Link></li>
           <li><Link href="/contact">Contact </Link></li>
         </ul>
 
