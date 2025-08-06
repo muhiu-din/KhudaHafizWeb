@@ -4,8 +4,6 @@ import React from 'react'
 const Navbar = () => {
   return (
     <div>
-
-
       {/* <!-- Navbar --> */}
       <nav className="flex justify-between items-center px-6 md:px-20 py-4 bg-[#7B5A13] rounded-full mx-4 md:mx-16 mt-6">
         {/* <!-- Logo --> */}
@@ -21,7 +19,7 @@ const Navbar = () => {
           <li><Link href="/home">Home</Link></li>
           <li><Link href="/packages">Packages</Link></li>
           <li><Link href="/services">Services</Link></li>
-          <li><Link href="/about">About us</Link></li>
+          <li><Link href="/aboutus">About us</Link></li>
           <li><Link href="/contact">Contact </Link></li>
         </ul>
 
@@ -31,7 +29,6 @@ const Navbar = () => {
           <Link href={"/auth/signup"} className="px-5 py-1 bg-white text-[#7B5A13] font-semibold rounded-full text-sm">Sign up</Link>
         </div>
       </nav>
-
     </div>
   )
 }
