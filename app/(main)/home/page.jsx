@@ -67,6 +67,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link' // 1. Imported the Link component
 import Packages from '@/components/Home-page/Packages'
 import Services from '@/components/home-page/Services'
 import Feature from '@/components/home-page/Feature'
@@ -76,17 +77,17 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative w-full  -z-10 top-[-100px] flex  ">
+      <div className="relative w-full -z-10 top-[-100px] flex">
         {/* Left side - Content */}
-        <div className="w-1/2 bg-[#190B00] py-10 gap-20   text-white px-6 md:px-20 flex justify-center  ">
-          <div className='flex flex-col justify-center  gap-10 mt-24 '>
-            <h1 className="text-5xl font-bold leading-snug  px-10">
-            Graceful Goodbyes,<br />Simplified with Technology
-          </h1>
-          <p className="text-lg font-light absolute bottom-10 left-30   ">
-            Khuda Hafiz is Pakistan's first digital funeral platform,offering <br />
-             dignified and compassionate care.
-          </p>
+        <div className="w-1/2 bg-[#190B00] py-10 gap-20 text-white px-6 md:px-20 flex justify-center">
+          <div className='flex flex-col justify-center gap-10 mt-24'>
+            <h1 className="text-5xl font-bold leading-snug px-10">
+              Graceful Goodbyes,<br />Simplified with Technology
+            </h1>
+            <p className="text-lg font-light absolute bottom-10 left-30">
+              Khuda Hafiz is Pakistan's first digital funeral platform,offering <br />
+              dignified and compassionate care.
+            </p>
           </div>
         </div>
 
@@ -107,28 +108,30 @@ export default function HomePage() {
           We understand your fears, your hopes, and your prayers. <br />
           Khuda Hafiz is built on compassion, for you, by those who care.
         </h3>
-     <div className='flex  justify-center mt-32 fixed bottom-6 right-6  flex-col items-center gap-2 z-10'>
-        <button
-      className=" bg-white p-4 rounded-full shadow-lg hover:scale-105 transition duration-300 ease-in-out"
-      title="Send Feedback"
-    >
-      <img
-        src="/home-page/assets/Popular.png" // Your image path here
-        alt="Feedback"
-        className="w-8 h-8"
-      />
+        
+        {/* 2. Wrapped the entire feedback div in a Link component */}
+        <Link href="/feedback">
+          <div className='flex justify-center fixed bottom-6 right-6 flex-col items-center gap-2 z-10 cursor-pointer group'>
+            <div
+              className="bg-white p-4 rounded-full shadow-lg transition-transform duration-300 ease-in-out group-hover:scale-110"
+              title="Send Feedback"
+            >
+              <img
+                src="/home-page/assets/Popular.png"
+                alt="Feedback"
+                className="w-8 h-8"
+              />
+            </div>
+            <h3 className='text-[#704116] font-semibold transition-colors group-hover:text-[#281202]'>Feedback?</h3>
+          </div>
+        </Link>
 
-    </button>
-    <h3 className='text-[#704116] font-semibold'>Feedback?</h3>
-     </div>
       </section>
 
 
       {/* Other sections */}
       <Packages />
-
       <Services />
-     
       <Feature />
     </>
   )
