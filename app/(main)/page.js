@@ -8,10 +8,10 @@ import { faqs } from "@/components/landing-page/contants";
 export default function Home() {
   return (
     <div>
-      <img src="/landing-page/assets/background-cover.png" className="absolute w-full -z-10 top-0 left-0" alt="" />
-      <section className="relative px-6 py-20 overflow-hidden">
-        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between relative z-10">
-          {/* Hero Text Section */}
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <img src="/landing-page/assets/background-cover.png" className="absolute w-full h-full object-cover -z-10 top-0 left-0" alt="" />
+        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between relative z-10 px-6 py-20 min-h-[60vh]">
           <div className="max-w-2xl text-left">
             <h1 className="text-3xl text-white md:text-5xl font-bold leading-tight">
               In Your Time of Loss, We help <br />
@@ -22,19 +22,14 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <Notify/>
-        {/* that's the horizontal row isn't effected by the container width */}
-        <div className="w-screen h-px  bg-gray-300 relative left-1/2 -translate-x-1/2" />
-
-        <OurServices/>
-        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
-        <Works/>
-        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
-        <TestimonialCarousel/>
-        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
-        <Accordion data={faqs} />
-        <div className="w-screen h-px mt-10  bg-gray-300 relative left-1/2 -translate-x-1/2" />
       </section>
+
+      {/* Other Components - now they will control their own background and width */}
+      <Notify/>
+      <OurServices/>
+      <Works/>
+      <TestimonialCarousel/>
+      <Accordion data={faqs} />
     </div>
   );
 }

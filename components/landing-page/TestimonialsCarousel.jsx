@@ -1,27 +1,12 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; // Corrected the import
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { testimonials } from './contants';
-
+import { motion, AnimatePresence } from 'framer-motion';
 
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
   const totalTestimonials = testimonials.length;
-
-  useEffect(() => {
-    if (isAutoPlaying) {
-      const interval = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % totalTestimonials);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlaying, totalTestimonials]);
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
 
   const nextSlide = () => {
     setCurrentIndex(prev => (prev + 1) % totalTestimonials);
@@ -31,135 +16,123 @@ const TestimonialCarousel = () => {
     setCurrentIndex(prev => (prev - 1 + totalTestimonials) % totalTestimonials);
   };
 
-  const renderStars = (rating, isCenter = true) => {
-    const starSize = isCenter ? 'w-4 h-4' : 'w-3 h-3';
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`${starSize} ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-yellow-300'}`}
-      />
-    ));
-  };
-
   const getVisibleTestimonials = () => {
     const prevIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
     const nextIndex = (currentIndex + 1) % totalTestimonials;
-
     return [
-      { ...testimonials[prevIndex], position: 'left' },
-      { ...testimonials[currentIndex], position: 'center' },
-      { ...testimonials[nextIndex], position: 'right' }
+      testimonials[prevIndex],
+      testimonials[currentIndex],
+      testimonials[nextIndex]
     ];
   };
 
   const visibleTestimonials = getVisibleTestimonials();
 
   return (
-    <div
-      className="w-full max-w-7xl mx-auto px-4 py-12"
-      onMouseEnter={() => setIsAutoPlaying(false)}
-      onMouseLeave={() => setIsAutoPlaying(true)}
-    >
-      <div className="text-center mb-12">
-        <h2 className="text-3xl mt-10 font-bold text-gray-900 my-2">Testimonials</h2>
-        <div className="w-16 h-1 bg-blue-500 mx-auto"></div>
-      </div>
+    // UPDATED: Added bg-white and adjusted padding
+    <section className="w-full bg-white py-20">
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-[#281202]">Testimonials</h2>
+        </div>
 
-      <div className="relative overflow-hidden">
-        {/* Main carousel container */}
-        <div className="flex justify-center items-end py-8 min-h-[400px]">
-          {visibleTestimonials.map((testimonial) => {
-            const isCenter = testimonial.position === 'center';
-            const isLeft = testimonial.position === 'left';
-
-            return (
-              <div
-                key={`${testimonial.id}-${currentIndex}`}
-                className={`flex-shrink-0 mx-3 transition-all duration-700 ease-in-out transform ${isCenter
-                  ? 'w-96 scale-100 translate-y-0 z-30 opacity-100'
-                  : isLeft
-                    ? 'w-80 scale-90 translate-y-4 -translate-x-2 z-10 opacity-75'
-                    : 'w-80 scale-90 translate-y-4 translate-x-2 z-10 opacity-75'
-                  }`}
-                style={{
-                  filter: isCenter ? 'none' : 'blur(0.5px)',
-                }}
+        <div className="relative flex items-center justify-center h-[450px] overflow-hidden">
+          <AnimatePresence>
+            <div className="flex items-center justify-center w-full">
+              {/* Left Card */}
+              <motion.div
+                key={currentIndex - 1}
+                className="absolute w-[350px] p-8 bg-[#F5F4F0] rounded-2xl shadow-lg opacity-50 transform -translate-x-full scale-90"
+                initial={{ x: '-100%', opacity: 0, scale: 0.9 }}
+                animate={{ x: '-80%', opacity: 0.5, scale: 0.9 }}
+                exit={{ x: '-100%', opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
               >
-                <div className={`bg-[#F5F4F0] rounded-2xl shadow-lg border border-gray-100 transition-all duration-700 ${isCenter
-                  ? 'p-8 h-auto hover:shadow-2xl shadow-xl'
-                  : 'p-6 h-80 hover:shadow-lg'
-                  }`}>
-                  {/* Header with avatar and info */}
-                  <div className={`flex items-center mb-4 ${isCenter ? 'mb-6' : 'mb-4'}`}>
-                    <div className={`bg-gradient-to-br rounded-full flex items-center justify-center text-[#999999] font-semibold mr-4 ${isCenter ? 'w-14 h-14 text-lg' : 'w-10 h-10 text-sm'
-                      }`}>
-                      {React.cloneElement(testimonial.avatar, {
-                        size: isCenter ? 40 : 30,
-                        className: "text-current -mt-4"
-                      })}
-                    </div>
-                    <div className='w-full'>
-                      <h3 className={`font-semibold text-gray-900 ${isCenter ? 'text-lg' : 'text-base'}`}>
-                        {testimonial.name}
-                      </h3>
-                      <div className="flex justify-between">
-                        <p className={`text-gray-600 ${isCenter ? 'text-sm' : 'text-xs'}`}>
-                          {testimonial.role}
-                        </p>
-                        <div className={`flex items-center ml-10 ${isCenter ? 'mb-6' : 'mb-4'}`}>
-                          {renderStars(testimonial.rating, isCenter)}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 <CardContent testimonial={visibleTestimonials[0]} isCenter={false} />
+              </motion.div>
 
+              {/* Center Card */}
+              <motion.div
+                key={currentIndex}
+                className="relative w-[411px] p-8 bg-[#F5F4F0] rounded-2xl shadow-2xl z-10"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <CardContent testimonial={visibleTestimonials[1]} isCenter={true} />
+              </motion.div>
 
-
-                  <p className={`text-gray-700 leading-relaxed ${isCenter ? 'text-base' : 'text-sm'
-                    }`}>
-                    {isCenter ? testimonial.text : testimonial.text.substring(0, 120) + '...'}
-                  </p>
-
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex justify-center items-center mt-8 space-x-6">
-        {/* Left arrow */}
-        <button
-          onClick={prevSlide}
-          className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 border border-gray-200 group"
-        >
-          <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
-        </button>
-
-        {/* Dot indicators */}
-        <div className="flex space-x-3">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goToSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentIndex
-                ? 'bg-[#867D7D] scale-125'
-                : 'bg-[#7B7272] hover:scale-110'
-                }`}
-            />
-          ))}
+              {/* Right Card */}
+              <motion.div
+                key={currentIndex + 1}
+                className="absolute w-[350px] p-8 bg-[#F5F4F0] rounded-2xl shadow-lg opacity-50 transform translate-x-full scale-90"
+                initial={{ x: '100%', opacity: 0, scale: 0.9 }}
+                animate={{ x: '80%', opacity: 0.5, scale: 0.9 }}
+                exit={{ x: '100%', opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+              >
+                 <CardContent testimonial={visibleTestimonials[2]} isCenter={false} />
+              </motion.div>
+            </div>
+          </AnimatePresence>
         </div>
 
-        {/* Right arrow */}
-        <button
-          onClick={nextSlide}
-          className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 border border-gray-200 group"
-        >
-          <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
-        </button>
+        {/* Navigation */}
+        <div className="flex justify-center items-center mt-8 space-x-6">
+          <button onClick={prevSlide} className="p-2 rounded-full hover:bg-gray-200 transition-colors">
+            <ChevronLeft className="w-6 h-6 text-gray-700" />
+          </button>
+          <div className="flex space-x-3">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-[#281202] scale-125' : 'bg-gray-300 hover:scale-110'}`}
+              />
+            ))}
+          </div>
+          <button onClick={nextSlide} className="p-2 rounded-full hover:bg-gray-200 transition-colors">
+            <ChevronRight className="w-6 h-6 text-gray-700" />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
+
+// Helper component for card content to avoid repetition
+const CardContent = ({ testimonial, isCenter }) => {
+    // Return null if testimonial data is not available to prevent crashes
+    if (!testimonial) {
+        return null;
+    }
+
+    const renderStars = (rating) => {
+        return Array.from({ length: 5 }, (_, i) => (
+            <Star key={i} className={`w-4 h-4 ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+        ));
+    };
+
+    return (
+        <>
+            <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                    {React.cloneElement(testimonial.avatar, { size: 28, className: "text-gray-500" })}
+                </div>
+                <div>
+                    <h3 className="font-bold text-lg text-[#281202]">{testimonial.name}</h3>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                </div>
+                <div className="flex items-center ml-auto">
+                    {renderStars(testimonial.rating)}
+                </div>
+            </div>
+            <p className={`leading-relaxed ${isCenter ? 'text-gray-700' : 'text-gray-600 text-sm'}`}>
+                "{isCenter ? testimonial.text : testimonial.text.substring(0, 100) + '...'}"
+            </p>
+        </>
+    )
+}
 
 export default TestimonialCarousel;
