@@ -10,32 +10,27 @@ const primaryServices = [
     title: 'Shroud (Kafan)',
     description: 'We provide high-quality Islamic shrouds for men, women, and children.',
     imageUrl: '/home-page/assets/shroud.png',
-    gridPosition: 'md:row-start-2 md:col-start-1 justify-self-end',
   },
   {
     id: 'grave',
     title: 'Grave Management',
     description: 'We assist in grave selection, purchasing, and digging to ensure a smooth burial process.',
     imageUrl: '/home-page/assets/grave.png',
-    gridPosition: 'md:row-start-1 md:col-start-2 justify-self-center',
   },
   {
     id: 'catering',
     title: 'Catering Management',
     description: 'We provide meal arrangements for condolence gatherings, offering hassle-free catering.',
     imageUrl: '/home-page/assets/chef.png',
-    gridPosition: 'md:row-start-3 md:col-start-2 justify-self-center',
   },
   {
     id: 'support',
     title: 'Emotional Support',
     description: 'We connect grieving families with professional therapists for counseling and support.',
     imageUrl: '/home-page/assets/enjoy.png',
-    gridPosition: 'md:row-start-2 md:col-start-3 justify-self-start',
   },
 ];
 
-// --- Reordered secondary services with updated image URLs ---
 const secondaryServices = [
     {
         title: 'Tech Consultation for Nonprofits',
@@ -81,49 +76,91 @@ const secondaryServices = [
     },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+// --- NEW: Hero Section for the Services Page ---
+const ServicesHero = () => {
+    return (
+        <section 
+            className="relative w-full h-[516px] flex items-center justify-center overflow-hidden"
+            style={{ backgroundColor: '#281202' }}
+        >
+            <div className="relative z-10 w-full max-w-[1440px] h-full mx-auto">
+                <motion.div 
+                    className="absolute top-[168px] left-[120px] w-[700px] h-[152px] text-white"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                >
+                    <h1 className="text-6xl font-bold leading-tight">Services</h1>
+                    <p className="mt-4 text-lg text-gray-300">
+                        From compassionate funeral services to empowering social organizations with technology, we're building a comprehensive platform for positive impact.
+                    </p>
+                </motion.div>
+                <motion.div 
+                    className="absolute top-[46px] left-[776px] w-[653px] h-[467px]"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+                >
+                    <img 
+                        src="/services-page/assets/hero.png" // Replace with your actual image path
+                        alt="Services Logo" 
+                        className="w-full h-full object-contain" 
+                    />
+                </motion.div>
+            </div>
+        </section>
+    );
 };
 
-const cardPopIn = {
-  hidden: { opacity: 0, scale: 0.8, y: 50 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 15,
-    },
-  },
-};
-
-const secondaryCardSlideIn = (layout) => ({
-  hidden: { opacity: 0, x: layout === 'imageLeft' ? -100 : 100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      ease: 'easeOut',
-    },
-  },
-});
 
 const ServicesPage = () => {
+  const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
+  const cardPopIn = { hidden: { opacity: 0, scale: 0.8, y: 50 }, visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } } };
+  const secondaryCardSlideIn = (layout) => ({ hidden: { opacity: 0, x: layout === 'imageLeft' ? -100 : 100 }, visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } } });
+
+  // Reusable card component for primary services
+  const ServiceCard = ({ service }) => (
+    <motion.div
+      variants={cardPopIn}
+      className="w-full max-w-[383px] h-[484px] bg-white rounded-3xl p-8 text-center flex flex-col"
+      style={{ boxShadow: '0px 10px 40px 0px #00000040' }}
+    >
+      <motion.div
+        className="flex-grow flex flex-col items-center justify-center"
+        whileHover="hover"
+      >
+        <motion.img
+          src={service.imageUrl}
+          alt={`${service.title} illustration`}
+          className="rounded-lg"
+          style={{ width: '229px', height: '229px' }}
+          variants={{ hover: { scale: 1.1, rotate: -5, y: -20, transition: { type: 'spring', stiffness: 300, damping: 10 } } }}
+        />
+        <motion.h3
+          className="text-2xl font-bold text-gray-800 mt-8"
+          variants={{ hover: { y: 20, transition: { type: 'spring', stiffness: 300 } } }}
+        >
+          {service.title}
+        </motion.h3>
+        <motion.p
+          className="text-gray-600 mt-2"
+          variants={{ hover: { y: 20, transition: { type: 'spring', stiffness: 300 } } }}
+        >
+          {service.description}
+        </motion.p>
+      </motion.div>
+    </motion.div>
+  );
+
   return (
     <div style={{ backgroundColor: '#F5F4F0' }} className="min-h-screen font-sans overflow-x-hidden">
-      {/* Wrapper for centered content */}
-      <div className="container mx-auto px-4 pt-12 sm:pt-16 pb-24 flex flex-col items-center">
-        {/* --- Page Header --- */}
+      
+      <ServicesHero />
+
+      {/* --- Primary Services Section --- */}
+      <div className="container mx-auto px-4 pt-24 sm:pt-32 pb-24 flex flex-col items-center">
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -136,59 +173,30 @@ const ServicesPage = () => {
           </p>
         </motion.div>
 
-        {/* --- Primary Services Section --- */}
+        {/* --- UPDATED LAYOUT FOR PRIMARY SERVICES --- */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-x-8 gap-y-2 w-full md:w-[1200px] items-center"
+          className="relative w-full md:w-[1200px] flex flex-col items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {primaryServices.map((service) => (
-            <motion.div
-              key={service.id}
-              variants={cardPopIn}
-              className={`w-full max-w-[383px] h-[484px] bg-white rounded-3xl p-8 text-center flex flex-col ${service.gridPosition}`}
-              style={{ boxShadow: '0px 10px 40px 0px #00000040' }}
-            >
-              <motion.div
-                className="flex-grow flex flex-col items-center justify-center"
-                whileHover="hover"
-              >
-                <motion.img
-                  src={service.imageUrl}
-                  alt={`${service.title} illustration`}
-                  className="rounded-lg"
-                  style={{ width: '229px', height: '229px' }}
-                  variants={{
-                    hover: {
-                      scale: 1.1,
-                      rotate: -5,
-                      y: -20,
-                      transition: { type: 'spring', stiffness: 300, damping: 10 },
-                    },
-                  }}
-                />
-                <motion.h3
-                  className="text-2xl font-bold text-gray-800 mt-8"
-                  variants={{ hover: { y: 20, transition: { type: 'spring', stiffness: 300 } } }}
-                >
-                  {service.title}
-                </motion.h3>
-                <motion.p
-                  className="text-gray-600 mt-2"
-                  variants={{ hover: { y: 20, transition: { type: 'spring', stiffness: 300 } } }}
-                >
-                  {service.description}
-                </motion.p>
-              </motion.div>
-            </motion.div>
-          ))}
+          {/* Top Card */}
+          <ServiceCard service={primaryServices.find(s => s.id === 'grave')} />
+          
+          {/* Middle Row with Negative Margin */}
+          <div className="w-full flex flex-col md:flex-row justify-between items-center md:-my-48 z-10 gap-8 md:gap-0">
+            <ServiceCard service={primaryServices.find(s => s.id === 'shroud')} />
+            <ServiceCard service={primaryServices.find(s => s.id === 'support')} />
+          </div>
+
+          {/* Bottom Card */}
+          <ServiceCard service={primaryServices.find(s => s.id === 'catering')} />
         </motion.div>
       </div>
       
       {/* --- Secondary Services Section (Full-width) --- */}
-      <div className="mt-32 space-y-16 w-full">
+      <div className="space-y-16 w-full">
           {secondaryServices.map((service, index) => (
               <div key={index} className={`w-full flex ${service.layout === 'imageLeft' ? 'justify-start' : 'justify-end'}`}>
                   <motion.div
@@ -221,7 +229,6 @@ const ServicesPage = () => {
               </div>
           ))}
       </div>
-      {/* Added padding at the bottom for spacing */}
       <div className="py-16"></div>
     </div>
   );
